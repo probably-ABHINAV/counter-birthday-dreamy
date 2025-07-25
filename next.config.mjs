@@ -24,18 +24,9 @@ const nextConfig = {
       }
     ]
   },
-  experimental: {
-    optimizePackageImports: ['framer-motion']
-  },
-  // Ensure proper handling of client-side components
-  transpilePackages: ['three', '@react-three/fiber', '@react-three/drei'],
-  webpack: (config, { isServer }) => {
-    // Handle Three.js on server side
-    if (isServer) {
-      config.externals = [...(config.externals || []), 'three']
-    }
-    return config
-  }
+  // Simplified config without problematic optimizations
+  swcMinify: true,
+  reactStrictMode: true,
 }
 
 export default nextConfig

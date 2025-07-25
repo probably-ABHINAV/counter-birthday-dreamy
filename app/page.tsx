@@ -1,18 +1,12 @@
 "use client"
 
-import { Suspense, useState, useEffect } from "react"
-import dynamic from "next/dynamic"
+import { useState, useEffect } from "react"
 import CountdownTimer from "@/components/CountdownTimer"
 import ParallaxSection from "@/components/ParallaxSection"
 import InteractiveOrb from "@/components/InteractiveOrb"
 import FooterSocials from "@/components/FooterSocials"
 import LoadingSpinner from "@/components/LoadingSpinner"
-
-// Dynamically import HeroCanvas to avoid SSR issues
-const HeroCanvas = dynamic(() => import("@/components/HeroCanvas"), {
-  ssr: false,
-  loading: () => <LoadingSpinner />,
-})
+import HeroCanvas from "@/components/HeroCanvas"
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false)
@@ -30,14 +24,9 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-gradient-to-br from-rose-900 via-purple-900 to-pink-900 overflow-x-hidden">
-      {/* Custom Cursor */}
-      <div className="cursor-moon fixed inset-0 pointer-events-none z-50" />
-
-      {/* Hero Section with 3D Scene */}
+      {/* Hero Section with Safe 3D Scene */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
-        <Suspense fallback={<LoadingSpinner />}>
-          <HeroCanvas />
-        </Suspense>
+        <HeroCanvas />
 
         {/* Countdown Overlay */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -58,7 +47,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Parallax Story Panels with Beautiful Romantic Images */}
+      {/* Parallax Story Panels */}
       <ParallaxSection
         id="5-days"
         title="5 Days — Candlelit Dreams"
