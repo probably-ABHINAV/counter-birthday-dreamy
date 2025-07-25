@@ -7,15 +7,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ['images.unsplash.com', 'placeholder.svg'],
+    domains: ['placeholder.svg'],
     unoptimized: true,
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
-      },
       {
         protocol: 'https',
         hostname: 'placeholder.svg',
@@ -24,7 +18,6 @@ const nextConfig = {
       }
     ]
   },
-  // Simplified config without problematic optimizations
   swcMinify: true,
   reactStrictMode: true,
 }

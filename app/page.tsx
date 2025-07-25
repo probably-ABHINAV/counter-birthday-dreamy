@@ -24,24 +24,26 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-gradient-to-br from-rose-900 via-purple-900 to-pink-900 overflow-x-hidden">
-      {/* Hero Section with Safe 3D Scene */}
+      {/* Hero Section with Pure CSS Magic */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
         <HeroCanvas />
 
         {/* Countdown Overlay */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <div className="text-center max-w-4xl mx-auto px-4">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 font-serif leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 font-serif leading-tight drop-shadow-2xl">
               ✨ Her Magical Birthday ✨
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-rose-200 mb-8 italic">Counting down to July 31st 💕</p>
+            <p className="text-lg sm:text-xl md:text-2xl text-rose-200 mb-8 italic drop-shadow-lg">
+              Counting down to July 31st 💕
+            </p>
             <CountdownTimer targetDate={birthdayDate} />
           </div>
         </div>
 
         {/* Ambient Audio Control */}
         <div className="absolute top-4 sm:top-8 right-4 sm:right-8 z-20">
-          <button className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300">
+          <button className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110">
             🎵
           </button>
         </div>
