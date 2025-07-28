@@ -20,18 +20,18 @@ UID:birthday-reminder-${Date.now()}@birthdayCountdown.com
 DTSTAMP:${formatDate(new Date())}
 DTSTART:${formatDate(startDate)}
 DTEND:${formatDate(endDate)}
-SUMMARY:🎉 Aarushi's Birthday! 🎂
-DESCRIPTION:It's Aarushi's special day! Time to celebrate this amazing person! 🎉✨
+SUMMARY:🎉 Pragya's Birthday! 🎂
+DESCRIPTION:It's Pragya's special day! Time to celebrate this amazing person! 🎉✨
 LOCATION:Celebration Time! 🎈
 BEGIN:VALARM
 TRIGGER:-PT1H
 ACTION:DISPLAY
-DESCRIPTION:Aarushi's birthday is in 1 hour! 🎂
+DESCRIPTION:Pragya's birthday is in 1 hour! 🎂
 END:VALARM
 BEGIN:VALARM
 TRIGGER:-P1D
 ACTION:DISPLAY
-DESCRIPTION:Aarushi's birthday is tomorrow! Get ready to celebrate! 🎉
+DESCRIPTION:Pragya's birthday is tomorrow! Get ready to celebrate! 🎉
 END:VALARM
 END:VEVENT
 END:VCALENDAR`
@@ -39,7 +39,7 @@ END:VCALENDAR`
     const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" })
     const link = document.createElement("a")
     link.href = URL.createObjectURL(blob)
-    link.download = "aarushi-birthday-reminder.ics"
+    link.download = "pragya-birthday-reminder.ics"
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -58,7 +58,7 @@ END:VCALENDAR`
             📅 Don't Forget!
           </h3>
           <p className="text-rose-200 mb-6">
-            Add this special day to your calendar so you never miss celebrating Aarushi! 🎉
+            Add this special day to your calendar so you never miss celebrating Pragya!🎉
           </p>
           
           <motion.button

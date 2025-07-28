@@ -20,7 +20,7 @@ export default function Home() {
   const [messageIndex, setMessageIndex] = useState(0)
 
   // Personalization
-  const name = "Aarushi" // You can customize this name
+  const name = "Pragya" // You can customize this name
   // Set birthday date to July 31st, 2025
   const birthdayDate = new Date("2025-07-31T00:00:00")
 
@@ -74,14 +74,14 @@ export default function Home() {
         {/* Enhanced Countdown Overlay */}
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <div className="text-center max-w-4xl mx-auto px-4">
-            <div className="mb-8">
-              <div className="relative inline-block">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-rose-200 mb-4 animate-bounce">
+            <div className="mb-12 text-center">
+              <div className="relative inline-block mb-6">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-rose-200 animate-bounce">
                   Hey {name}! 👋✨
                 </h2>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full animate-ping"></div>
+                <div className="absolute -top-3 -right-3 w-8 h-8 bg-yellow-400 rounded-full animate-ping opacity-75"></div>
               </div>
-              <p className="text-xl sm:text-2xl text-rose-300 font-semibold animate-pulse">
+              <p className="text-xl sm:text-2xl md:text-3xl text-rose-300 font-semibold animate-pulse">
                 Your magical day is approaching! 🎉💖
               </p>
             </div>
