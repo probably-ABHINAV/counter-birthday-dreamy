@@ -71,7 +71,7 @@ export default function FooterSocials() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Spotify Integration */}
           <div className="lg:col-span-1">
-            <SpotifyPlaylist playlistId="37i9dQZF1DX0XUsuxWHRQd" />
+            <SpotifyPlaylist playlistId="22JDoeh5R8mCx98ETmtIdr" />
           </div>
 
           {/* Romantic Memories */}

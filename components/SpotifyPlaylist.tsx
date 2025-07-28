@@ -26,11 +26,11 @@ interface SpotifyPlaylistProps {
   playlistId?: string
 }
 
-// Mock playlist data for visual player
-const mockPlaylistData: PlaylistData = {
-  name: "💕 Our Love Story Playlist 💕",
-  description: "The perfect songs for your special day, my love!",
-  spotifyUrl: "https://open.spotify.com/playlist/37i9dQZF1DX0XUsuxWHRQd",
+// Mock playlist data with romantic songs for Aarushi - matches your Spotify playlist
+const mockPlaylist: PlaylistData = {
+  name: "💕 Special Songs for Aarushi 💕",
+  description: "Beautiful love songs to celebrate your special day",
+  spotifyUrl: "https://open.spotify.com/playlist/22JDoeh5R8mCx98ETmtIdr",
   tracks: [
     {
       id: "1",
@@ -52,7 +52,7 @@ const mockPlaylistData: PlaylistData = {
     },
     {
       id: "3",
-      name: "Thinking Out Loud",
+      name: "Thinking Out Loud", 
       artist: "Ed Sheeran",
       album: "x (Multiply)",
       duration: "4:41",
@@ -62,19 +62,64 @@ const mockPlaylistData: PlaylistData = {
     {
       id: "4",
       name: "A Thousand Years",
-      artist: "Christina Perri",
+      artist: "Christina Perri", 
       album: "The Twilight Saga: Breaking Dawn",
       duration: "4:45",
       image: "/placeholder.svg?height=300&width=300&text=A+Thousand+Years",
-      spotifyUrl: "https://open.spotify.com/track/6Zm6ZnTKGwJGnKdXJN0VJx",
+      spotifyUrl: "https://open.spotify.com/track/6lYBu5SiOkdcLPJJo5qU9S",
     },
     {
       id: "5",
+      name: "Just the Way You Are",
+      artist: "Bruno Mars",
+      album: "Doo-Wops & Hooligans", 
+      duration: "3:40",
+      image: "/placeholder.svg?height=300&width=300&text=Just+the+Way+You+Are",
+      spotifyUrl: "https://open.spotify.com/track/7BqBn9nzAq8spo5e7cZ0dJ",
+    },
+    {
+      id: "6",
       name: "Make You Feel My Love",
       artist: "Adele",
       album: "19",
-      duration: "3:32",
+      duration: "3:32", 
       image: "/placeholder.svg?height=300&width=300&text=Make+You+Feel+My+Love",
+      spotifyUrl: "https://open.spotify.com/track/0put0dEAnHWDbghHHwhqaK",
+    },
+    {
+      id: "7",
+      name: "Marry Me",
+      artist: "Train",
+      album: "Save Me, San Francisco",
+      duration: "4:18",
+      image: "/placeholder.svg?height=300&width=300&text=Marry+Me", 
+      spotifyUrl: "https://open.spotify.com/track/1PckUlxKqWQs3RlWXVBLw3",
+    },
+    {
+      id: "8", 
+      name: "Count on Me",
+      artist: "Bruno Mars",
+      album: "Doo-Wops & Hooligans",
+      duration: "3:17",
+      image: "/placeholder.svg?height=300&width=300&text=Count+on+Me",
+      spotifyUrl: "https://open.spotify.com/track/1PckUlxKqWQs3RlWXVBLw3",
+    },
+    {
+      id: "9",
+      name: "Stay With Me", 
+      artist: "Sam Smith",
+      album: "In The Lonely Hour",
+      duration: "2:52",
+      image: "/placeholder.svg?height=300&width=300&text=Stay+With+Me",
+      spotifyUrl: "https://open.spotify.com/track/5HKVl1dpi9AtaDpls8sXdI",
+    },
+    {
+      id: "10",
+      name: "Happy Birthday",
+      artist: "Stevie Wonder",
+      album: "Hotter Than July", 
+      duration: "6:04",
+      image: "/placeholder.svg?height=300&width=300&text=Happy+Birthday",
       spotifyUrl: "https://open.spotify.com/track/4WXYCTqfZqzKQNdgFU7HL8",
     },
   ],
@@ -93,18 +138,40 @@ export default function SpotifyPlaylist({ playlistId }: SpotifyPlaylistProps) {
     const fetchPlaylist = async () => {
       try {
         setLoading(true)
-        setPlaylist(mockPlaylistData)
-        setCurrentTrack(mockPlaylistData.tracks[0])
-        // Set duration based on current track
-        const track = mockPlaylistData.tracks[0]
+
+        // Try to fetch from API first
+        if (playlistId) {
+          const response = await fetch(`/api/playlist?id=${playlistId}`)
+          if (response.ok) {
+            const data = await response.json()
+            setPlaylist(data)
+            setCurrentTrack(data.tracks[0])
+            if (data.tracks[0]?.duration) {
+              const [minutes, seconds] = data.tracks[0].duration.split(":").map(Number)
+              setDuration(minutes * 60 + seconds)
+            }
+            setLoading(false)
+            return
+          }
+        }
+
+        // Fallback to mock data
+        setPlaylist(mockPlaylist)
+        setCurrentTrack(mockPlaylist.tracks[0])
+        const track = mockPlaylist.tracks[0]
         if (track?.duration) {
           const [minutes, seconds] = track.duration.split(":").map(Number)
           setDuration(minutes * 60 + seconds)
         }
       } catch (err) {
-        console.log("Using mock playlist data")
-        setPlaylist(mockPlaylistData)
-        setCurrentTrack(mockPlaylistData.tracks[0])
+        // Fallback to mock data
+        setPlaylist(mockPlaylist)
+        setCurrentTrack(mockPlaylist.tracks[0])
+        const track = mockPlaylist.tracks[0]
+        if (track?.duration) {
+          const [minutes, seconds] = track.duration.split(":").map(Number)
+          setDuration(minutes * 60 + seconds)
+        }
       } finally {
         setLoading(false)
       }

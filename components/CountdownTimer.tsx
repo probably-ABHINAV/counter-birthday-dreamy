@@ -63,9 +63,33 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
     { label: "Seconds", value: timeLeft.seconds },
   ]
 
+  // Calculate total time remaining for detailed display
+  const totalDays = timeLeft.days
+  const totalHours = timeLeft.hours
+  const totalMinutes = timeLeft.minutes
+
   return (
-    <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-      {timeUnits.map((unit, index) => (
+    <div className="text-center">
+      {/* Detailed countdown text */}
+      <div className="mb-6 text-rose-200 text-lg sm:text-xl">
+        {totalDays > 0 && (
+          <span>
+            Only <span className="font-bold text-white">{totalDays} days</span>
+            {totalHours > 0 && <span>, <span className="font-bold text-white">{totalHours} hours</span></span>}
+            {totalMinutes > 0 && <span>, <span className="font-bold text-white">{totalMinutes} minutes</span></span>}
+            <span> to go! ⏰</span>
+          </span>
+        )}
+        {totalDays === 0 && totalHours > 0 && (
+          <span>Less than a day left! Only <span className="font-bold text-white">{totalHours} hours</span> to go! 🎉</span>
+        )}
+        {totalDays === 0 && totalHours === 0 && (
+          <span>It's almost time! Only <span className="font-bold text-white">{totalMinutes} minutes</span> left! ✨</span>
+        )}
+      </div>
+
+      <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+        {timeUnits.map((unit, index) => (
         <motion.div
           key={unit.label}
           className="text-center relative"
@@ -124,6 +148,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
           </motion.div>
         </motion.div>
       ))}
+      </div>
     </div>
   )
 }

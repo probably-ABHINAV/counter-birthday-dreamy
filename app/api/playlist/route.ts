@@ -60,9 +60,9 @@ function formatDuration(ms: number): string {
 
 // Enhanced mock data as fallback
 const mockPlaylistData = {
-  name: "💕 Birthday Love Songs 💕",
-  description: "The most romantic songs for your special day!",
-  spotifyUrl: "https://open.spotify.com/playlist/37i9dQZF1DX0XUsuxWHRQd",
+  name: "💕 Special Songs for Aarushi 💕", 
+  description: "Beautiful love songs to celebrate your special day",
+  spotifyUrl: "https://open.spotify.com/playlist/22JDoeh5R8mCx98ETmtIdr",
   tracks: [
     {
       id: "1",
@@ -127,13 +127,31 @@ const mockPlaylistData = {
       image: "/placeholder.svg?height=300&width=300",
       spotifyUrl: "https://open.spotify.com/track/3gyAa1hqlbWKpCcZhsJKVw",
     },
+    {
+      id: "8",
+      name: "Stay With Me",
+      artist: "Sam Smith",
+      album: "In The Lonely Hour",
+      duration: "2:52",
+      image: "/placeholder.svg?height=300&width=300",
+      spotifyUrl: "https://open.spotify.com/track/5HKVl1dpi9AtaDpls8sXdI",
+    },
+    {
+      id: "9",
+      name: "Just the Way You Are",
+      artist: "Bruno Mars",
+      album: "Doo-Wops & Hooligans", 
+      duration: "3:40",
+      image: "/placeholder.svg?height=300&width=300",
+      spotifyUrl: "https://open.spotify.com/track/7BqBn9nzAq8spo5e7cZ0dJ",
+    },
   ],
 }
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
-    const playlistId = searchParams.get("id") || "37i9dQZF1DX0XUsuxWHRQd"
+    const playlistId = searchParams.get("id") || "22JDoeh5R8mCx98ETmtIdr"
 
     // Try to get Spotify access token
     const accessToken = await getSpotifyAccessToken()
