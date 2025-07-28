@@ -65,6 +65,9 @@
     overflow-x: hidden;
     background: linear-gradient(135deg, #881337, #7c3aed, #ec4899);
     min-height: 100vh;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: scroll-position;
   }
 
   html {
@@ -291,6 +294,21 @@ textarea:focus-visible {
   .border-white\/20 {
     border-color: rgba(255, 255, 255, 0.5);
   }
+}
+
+/* Performance optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+.smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
 /* Reduced motion preferences */

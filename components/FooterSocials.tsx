@@ -21,9 +21,9 @@ export default function FooterSocials() {
       title: "Serene Moment",
     },
     {
-      src: "/images/rose-petals.jpg",
-      alt: "Rose petals",
-      title: "Valentine's Day",
+      src: "/images/WhatsApp Image 2025-07-28 at 20.05.20_02bbe960_1753725640296.jpg",
+      alt: "Birthday celebration with chocolate cake",
+      title: "Sweet Celebration",
     },
   ]
 
