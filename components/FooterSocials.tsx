@@ -6,47 +6,47 @@ import SpotifyPlaylist from "./SpotifyPlaylist"
 export default function FooterSocials() {
   const romanticImages = [
     {
-      src: "/placeholder.svg?height=200&width=200&text=Romantic+Sunset",
-      alt: "Romantic sunset",
-      title: "Our First Date",
+      src: "/images/WhatsApp Image 2025-07-28 at 20.05.19_91d15c84_1753725640296.jpg",
+      alt: "Beautiful evening moment with flowers",
+      title: "Evening Roses",
     },
     {
-      src: "/placeholder.svg?height=200&width=200&text=Rose+Petals",
+      src: "/images/WhatsApp Image 2025-07-28 at 20.05.20_e3bc51e4_1753725640295.jpg",
+      alt: "Elegant moment by the window",
+      title: "Golden Hour",
+    },
+    {
+      src: "/images/WhatsApp Image 2025-07-28 at 20.05.20_5420dfb7_1753725640294.jpg",
+      alt: "Graceful pose by glass doors",
+      title: "Serene Moment",
+    },
+    {
+      src: "/images/rose-petals.jpg",
       alt: "Rose petals",
       title: "Valentine's Day",
-    },
-    {
-      src: "/placeholder.svg?height=200&width=200&text=Floating+Lanterns",
-      alt: "Floating lanterns",
-      title: "Anniversary Night",
-    },
-    {
-      src: "/placeholder.svg?height=200&width=200&text=Candlelight+Dinner",
-      alt: "Candlelight dinner",
-      title: "Romantic Dinner",
     },
   ]
 
   const birthdayImages = [
     {
-      src: "/placeholder.svg?height=200&width=200&text=Birthday+Roses",
-      alt: "Birthday roses",
-      title: "Birthday Roses",
+      src: "/images/WhatsApp Image 2025-07-28 at 20.05.20_02bbe960_1753725640296.jpg",
+      alt: "Birthday celebration with chocolate cake",
+      title: "Birthday Celebration",
     },
     {
-      src: "/placeholder.svg?height=200&width=200&text=Birthday+Candles",
-      alt: "Birthday candles",
-      title: "Wish Candles",
+      src: "/images/WhatsApp Image 2025-07-28 at 20.05.19_91d15c84_1753725640296.jpg",
+      alt: "Special evening with flowers",
+      title: "Special Day",
     },
     {
-      src: "/placeholder.svg?height=200&width=200&text=Celebration",
-      alt: "Celebration",
-      title: "Celebration",
+      src: "/images/WhatsApp Image 2025-07-28 at 20.05.20_e3bc51e4_1753725640295.jpg",
+      alt: "Beautiful birthday moment",
+      title: "Birthday Joy",
     },
     {
-      src: "/placeholder.svg?height=200&width=200&text=Garden+Party",
-      alt: "Garden party",
-      title: "Garden Party",
+      src: "/images/WhatsApp Image 2025-07-28 at 20.05.20_5420dfb7_1753725640294.jpg",
+      alt: "Elegant birthday celebration",
+      title: "Birthday Elegance",
     },
   ]
 
@@ -97,13 +97,12 @@ export default function FooterSocials() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="relative aspect-square rounded-lg sm:rounded-xl overflow-hidden bg-gradient-to-br from-rose-200 to-pink-300">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center p-2">
-                        <div className="text-2xl mb-2">💕</div>
-                        <div className="text-rose-800 text-xs font-medium">{image.title}</div>
-                      </div>
-                    </div>
+                  <div className="relative aspect-square rounded-lg sm:rounded-xl overflow-hidden">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-2 left-2 right-2 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       {image.title}
@@ -145,13 +144,12 @@ export default function FooterSocials() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="relative aspect-square rounded-lg sm:rounded-xl overflow-hidden bg-gradient-to-br from-purple-200 to-pink-300">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center p-2">
-                        <div className="text-2xl mb-2">🎂</div>
-                        <div className="text-purple-800 text-xs font-medium">{image.title}</div>
-                      </div>
-                    </div>
+                  <div className="relative aspect-square rounded-lg sm:rounded-xl overflow-hidden">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-2 left-2 right-2 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       {image.title}

@@ -3,8 +3,58 @@
 import { motion } from "framer-motion"
 
 export default function HeroCanvas() {
+  const backgroundImages = [
+    "/images/WhatsApp Image 2025-07-28 at 20.05.19_91d15c84_1753725640296.jpg",
+    "/images/WhatsApp Image 2025-07-28 at 20.05.20_e3bc51e4_1753725640295.jpg",
+    "/images/WhatsApp Image 2025-07-28 at 20.05.20_5420dfb7_1753725640294.jpg",
+    "/images/WhatsApp Image 2025-07-28 at 20.05.20_02bbe960_1753725640296.jpg",
+  ]
+
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden">
+      {/* Rotating Background Images */}
+      {backgroundImages.map((image, index) => (
+        <motion.div
+          key={index}
+          className="absolute inset-0"
+          initial={{ opacity: index === 0 ? 0.3 : 0 }}
+          animate={{
+            opacity: [0, 0.3, 0.3, 0],
+          }}
+          transition={{
+            duration: 16,
+            repeat: Number.POSITIVE_INFINITY,
+            delay: index * 4,
+            ease: "easeInOut",
+          }}
+        >
+          <div
+            className="w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url(${image})`,
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-rose-900/80 via-purple-900/70 to-pink-900/80" />
+        </motion.div>
+      ))}
+
+      {/* Animated Background Gradient Overlay */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-br from-rose-900/60 via-purple-900/50 to-pink-900/60"
+        animate={{
+          background: [
+            "linear-gradient(45deg, rgba(136,19,55,0.6), rgba(88,28,135,0.5), rgba(190,24,93,0.6))",
+            "linear-gradient(135deg, rgba(190,24,93,0.6), rgba(136,19,55,0.6), rgba(88,28,135,0.5))",
+            "linear-gradient(225deg, rgba(88,28,135,0.5), rgba(190,24,93,0.6), rgba(136,19,55,0.6))",
+            "linear-gradient(315deg, rgba(136,19,55,0.6), rgba(88,28,135,0.5), rgba(190,24,93,0.6))",
+          ],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "linear",
+        }}
+      />
       {/* Main magical orb */}
       <div className="absolute inset-0 flex items-center justify-center">
         <motion.div

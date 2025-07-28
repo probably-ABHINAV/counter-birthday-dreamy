@@ -103,15 +103,16 @@ export default function ParallaxSection({
         </div>
       </motion.div>
 
-      {/* Floating Hearts with Better Animation */}
+      {/* Floating Hearts and Images */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 8 }).map((_, i) => (
+        {/* Floating Hearts */}
+        {Array.from({ length: 6 }).map((_, i) => (
           <motion.div
-            key={i}
+            key={`heart-${i}`}
             className="absolute text-rose-300/40 text-xl sm:text-2xl"
             style={{
-              left: `${5 + i * 12}%`,
-              top: `${10 + (i % 4) * 20}%`,
+              left: `${5 + i * 15}%`,
+              top: `${10 + (i % 3) * 25}%`,
             }}
             animate={{
               y: [-30, -60, -30],
@@ -127,6 +128,39 @@ export default function ParallaxSection({
             }}
           >
             💕
+          </motion.div>
+        ))}
+
+        {/* Floating Image Previews */}
+        {[
+          "/images/WhatsApp Image 2025-07-28 at 20.05.19_91d15c84_1753725640296.jpg",
+          "/images/WhatsApp Image 2025-07-28 at 20.05.20_e3bc51e4_1753725640295.jpg",
+        ].map((image, i) => (
+          <motion.div
+            key={`image-${i}`}
+            className="absolute w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white/30 shadow-lg"
+            style={{
+              right: `${10 + i * 25}%`,
+              top: `${20 + i * 30}%`,
+            }}
+            animate={{
+              y: [-20, -40, -20],
+              rotate: [0, 10, -10, 0],
+              scale: [0.9, 1.1, 0.9],
+              opacity: [0.6, 0.9, 0.6],
+            }}
+            transition={{
+              duration: 8 + i * 1,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut",
+              delay: i * 2,
+            }}
+          >
+            <img
+              src={image}
+              alt="Floating memory"
+              className="w-full h-full object-cover"
+            />
           </motion.div>
         ))}
       </div>

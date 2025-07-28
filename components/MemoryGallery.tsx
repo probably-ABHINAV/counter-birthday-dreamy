@@ -4,134 +4,179 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 
-interface Memory {
-  id: number
-  title: string
-  description: string
-  image: string
-  note: string
-}
-
 export default function MemoryGallery() {
-  const [selectedMemory, setSelectedMemory] = useState<Memory | null>(null)
+  const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
-  const memories: Memory[] = [
+  const allImages = [
     {
-      id: 1,
-      title: "Our Amazing Adventure",
-      description: "That incredible day at the beach 🏖️",
-      image: "/placeholder.svg?height=300&width=400&text=Beach+Memory",
-      note: "Remember when we built that epic sandcastle? That was the best day ever! 🏰"
+      src: "/images/WhatsApp Image 2025-07-28 at 20.05.19_91d15c84_1753725640296.jpg",
+      alt: "Beautiful evening moment with flowers",
+      title: "Evening Roses",
+      description: "A magical evening filled with love and beautiful flowers",
     },
     {
-      id: 2,
-      title: "Coffee & Laughs",
-      description: "Our favorite café moments ☕",
-      image: "/placeholder.svg?height=300&width=400&text=Cafe+Memory",
-      note: "Those endless conversations over coffee - you always know how to make me laugh! 😄"
+      src: "/images/WhatsApp Image 2025-07-28 at 20.05.20_e3bc51e4_1753725640295.jpg",
+      alt: "Elegant moment by the window",
+      title: "Golden Hour",
+      description: "Captured in perfect golden light, radiating natural beauty",
     },
     {
-      id: 3,
-      title: "Sunset Views",
-      description: "Watching the world paint itself golden 🌅",
-      image: "/placeholder.svg?height=300&width=400&text=Sunset+Memory",
-      note: "The way you appreciated every color in that sunset - your wonder for beauty is inspiring! ✨"
+      src: "/images/WhatsApp Image 2025-07-28 at 20.05.20_5420dfb7_1753725640294.jpg",
+      alt: "Graceful pose by glass doors",
+      title: "Serene Moment",
+      description: "A peaceful moment showcasing natural grace and elegance",
     },
     {
-      id: 4,
-      title: "Celebration Time",
-      description: "Dancing like nobody's watching 💃",
-      image: "/placeholder.svg?height=300&width=400&text=Party+Memory",
-      note: "Your energy is contagious! That night we danced until our feet hurt was pure magic! 🎉"
-    }
+      src: "/images/WhatsApp Image 2025-07-28 at 20.05.20_02bbe960_1753725640296.jpg",
+      alt: "Birthday celebration with chocolate cake",
+      title: "Birthday Celebration",
+      description: "Sweet birthday memories with delicious chocolate cake",
+    },
   ]
 
   return (
-    <section className="relative py-16 px-4">
-      <div className="max-w-6xl mx-auto relative">
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            📸 Our Beautiful Memories
-          </h2>
-          <p className="text-rose-200 text-lg sm:text-xl">
-            A collection of moments that make my heart smile 💖
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {memories.map((memory, index) => (
-            <motion.div
-              key={memory.id}
-              className="group cursor-pointer"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              onClick={() => setSelectedMemory(memory)}
-            >
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 shadow-xl">
-                <div className="aspect-square bg-gradient-to-br from-rose-300 to-pink-400 relative overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-400 via-pink-400 to-rose-400">
-                    <div className="text-center p-4">
-                      <div className="text-4xl mb-2">📸</div>
-                      <div className="text-white font-medium text-sm drop-shadow-lg">{memory.title}</div>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-white font-semibold mb-1">{memory.title}</h3>
-                  <p className="text-rose-200 text-sm">{memory.description}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Memory Detail Modal */}
-        {selectedMemory && (
+    <div className="w-full max-w-6xl mx-auto">
+      {/* Main Gallery Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        {allImages.map((image, index) => (
           <motion.div
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            onClick={() => setSelectedMemory(null)}
+            key={index}
+            className="relative group cursor-pointer overflow-hidden rounded-2xl aspect-square"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setSelectedImage(index)}
           >
-            <motion.div
-              className="bg-white/10 backdrop-blur-md rounded-2xl max-w-md w-full border border-white/30"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="p-6">
-                <div className="aspect-square bg-gradient-to-br from-rose-300 to-pink-400 rounded-xl mb-4 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-6xl mb-2">📷</div>
-                    <div className="text-white font-medium">{selectedMemory.title}</div>
-                  </div>
-                </div>
-                <h3 className="text-white text-xl font-bold mb-2">{selectedMemory.title}</h3>
-                <p className="text-rose-200 mb-4">{selectedMemory.description}</p>
-                <div className="bg-rose-500/20 rounded-lg p-4">
-                  <p className="text-white italic">"{selectedMemory.note}"</p>
-                </div>
-                <button
-                  onClick={() => setSelectedMemory(null)}
-                  className="mt-4 w-full bg-rose-500 hover:bg-rose-600 text-white py-2 rounded-lg transition-colors"
-                >
-                  Close
-                </button>
-              </div>
-            </motion.div>
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h4 className="font-semibold text-lg mb-1">{image.title}</h4>
+              <p className="text-sm text-white/80">{image.description}</p>
+            </div>
+            <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="text-white text-sm">🔍</span>
+            </div>
           </motion.div>
-        )}
+        ))}
       </div>
-    </section>
+
+      {/* Featured Large Display */}
+      <motion.div
+        className="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-rose-300/20 mb-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h3 className="text-2xl font-semibold text-white mb-6 text-center">
+          ✨ Featured Memory ✨
+        </h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+          <motion.div
+            className="relative rounded-2xl overflow-hidden aspect-[4/3]"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+          >
+            <img
+              src={allImages[0].src}
+              alt={allImages[0].alt}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+          <div className="text-center lg:text-left">
+            <h4 className="text-3xl font-bold text-white mb-4">
+              {allImages[0].title}
+            </h4>
+            <p className="text-rose-200 text-lg leading-relaxed mb-6">
+              {allImages[0].description}
+            </p>
+            <motion.button
+              className="bg-gradient-to-r from-rose-500 to-pink-500 text-white px-8 py-3 rounded-full font-semibold hover:from-rose-600 hover:to-pink-600 transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              💖 View All Memories
+            </motion.button>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Image Modal */}
+      {selectedImage !== null && (
+        <motion.div
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedImage(null)}
+        >
+          <motion.div
+            className="relative max-w-4xl max-h-full"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.8 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={allImages[selectedImage].src}
+              alt={allImages[selectedImage].alt}
+              className="w-full h-full object-contain rounded-2xl"
+            />
+            <button
+              className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+              onClick={() => setSelectedImage(null)}
+            >
+              ✕
+            </button>
+            <div className="absolute bottom-4 left-4 right-4 text-center">
+              <h4 className="text-white text-xl font-semibold mb-2">
+                {allImages[selectedImage].title}
+              </h4>
+              <p className="text-white/80">
+                {allImages[selectedImage].description}
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+
+      {/* Memory Stats */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <motion.div
+          className="bg-white/10 backdrop-blur-md rounded-xl p-4 text-center border border-rose-300/20"
+          whileHover={{ scale: 1.05 }}
+        >
+          <div className="text-2xl mb-2">📸</div>
+          <div className="text-white font-semibold text-lg">{allImages.length}</div>
+          <div className="text-rose-200 text-sm">Beautiful Moments</div>
+        </motion.div>
+        <motion.div
+          className="bg-white/10 backdrop-blur-md rounded-xl p-4 text-center border border-rose-300/20"
+          whileHover={{ scale: 1.05 }}
+        >
+          <div className="text-2xl mb-2">💖</div>
+          <div className="text-white font-semibold text-lg">∞</div>
+          <div className="text-rose-200 text-sm">Love & Joy</div>
+        </motion.div>
+        <motion.div
+          className="bg-white/10 backdrop-blur-md rounded-xl p-4 text-center border border-rose-300/20"
+          whileHover={{ scale: 1.05 }}
+        >
+          <div className="text-2xl mb-2">🌟</div>
+          <div className="text-white font-semibold text-lg">365</div>
+          <div className="text-rose-200 text-sm">Days of Smiles</div>
+        </motion.div>
+        <motion.div
+          className="bg-white/10 backdrop-blur-md rounded-xl p-4 text-center border border-rose-300/20"
+          whileHover={{ scale: 1.05 }}
+        >
+          <div className="text-2xl mb-2">🎂</div>
+          <div className="text-white font-semibold text-lg">July 31</div>
+          <div className="text-rose-200 text-sm">Special Day</div>
+        </motion.div>
+      </div>
+    </div>
   )
 }
